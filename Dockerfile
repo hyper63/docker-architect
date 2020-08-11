@@ -1,5 +1,7 @@
 FROM node:12
 
+NAME ark
+
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
    && apt-get upgrade -y \
    && apt-get install -y --no-install-recommends \
