@@ -1,6 +1,6 @@
-# ark
+# Architect Docker Image - (Ark)
 
-ark is a docker image that contains node v12, aws-cli, and @architect/architect 
+This image is used to deploy architect projects in CI systems like Jenkins and Gitlab.
 
 ## How to build the image
 
