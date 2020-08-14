@@ -2,6 +2,10 @@
 
 This image is used to deploy architect projects in CI systems like Jenkins and Gitlab.
 
+* NodeJS v12.18.3
+* AWS CLI - v2.0.38
+* @architect/architect version 6.5.4
+
 ## How to build the image
 
 ``` sh
