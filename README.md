@@ -49,17 +49,16 @@ pipeline {
 When using this image you need to create a folder `.aws` and create two files: `credentials, config` the credentials file will contain your `aws_access_key_id` and `aws_secret_access_key`, and the config file will contain `region` and `output`.  Here is a script that sets up these files using some environment variables.
 
 ```
-steps {
-  sh 'rm -rf ~/.aws && mkdir ~/.aws'
-  sh 'echo "[default]" >> ~/.aws/credentials'
-  sh 'echo "aws_access_key_id = ${AWS_ACCESS_KEY}" >> ~/.aws/credentials'
-  sh 'echo "aws_secret_access_key = ${AWS_ACCESS_SECRET}" >> ~/.aws/credentials'
-  sh 'echo "[default]" >> ~/.aws/config'
-  sh 'echo "region = us-east-1" >> ~/.aws/config'
-  sh 'echo "output = json" >> ~/.aws/config'
-
-  sh 'arc deploy'
+stage('deploy') {
+  environment {
+    AWS_ACCESS_KEY_ID = credentials('aws-arc-key')
+    AWS_SECRET_ACCESS_KEY = credentials('aws-arc-secret')
+    AWS_DEFAULT_REGION = 'us-west-1'
+    AWS_DEFAULT_OUTPUT = 'json'
+  }
+  steps {
+    sh 'arc deploy'
+  }
 }
-
 ```
 
